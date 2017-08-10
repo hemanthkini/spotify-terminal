@@ -1,8 +1,8 @@
-## Spotify-terminal
+# Spotify-terminal
 
 Control Spotify from your terminal. In active development.
 
-# Installation
+## Installation
 
 Prerequisites: python3, pip3, Spotify premium account
 
