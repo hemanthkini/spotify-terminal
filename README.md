@@ -8,3 +8,8 @@ Prerequisites: python3, pip3, Spotify premium account
 
 1. Set up the credentials file from the template.
 2. Run 'make install' to install dependencies and copy the script to /usr/local/bin. I recommend setting up an alias, like 'sp'.
+
+
+## Currently supported 
+
+'play', 'pause', 'next', 'prev', 'repeat [one/all/off]', 'shuffle [on/off]'
