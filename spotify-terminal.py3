@@ -87,6 +87,9 @@ def acquire_credentials():
         token['refresh_token'] = credentials['refresh_token']
         token['token_type'] = credentials['token_type']
         token['expires_in'] = credentials['expires_in']
+        if  (credentials['expires_at'] <= int(time.time())):
+            print("Refreshing token")
+            token['expires_in'] = -30
 
         extra = {}
         extra['client_id'] = credentials['client_id']
@@ -99,10 +102,8 @@ def acquire_credentials():
                              auto_refresh_url=refresh_url,
                              auto_refresh_kwargs=extra,
                              token_updater=credentials.update)
-        if  (credentials['expires_at'] <= int(time.time())):
-            token['expires_in'] = -30
-            token = oauth.get(refresh_url)
-            print(token)
+            # token = oauth.get(refresh_url)
+            # print(token.text)
 
         spotify = oauth
 
@@ -122,6 +123,6 @@ command = args[0]
 matching_command = [c for c in supported_commands.keys() if c.startswith(command)]
 if len(matching_command) == 1:
     command = matching_command[0]
-    command_str = 'spotify.' + supported_commands[command]['type'] + '(\'' + BASE_API_URL + supported_commands[command]['path'] + '\')'
+    command_str = 'print(spotify.' + supported_commands[command]['type'] + '(\'' + BASE_API_URL + supported_commands[command]['path'] + '\').text)'
     print(command_str)
     exec(command_str)
