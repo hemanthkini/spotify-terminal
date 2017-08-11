@@ -194,7 +194,7 @@ def acquire_credentials():
         new_credentials = {}
         new_credentials['client_id'] = credentials['client_id']
         new_credentials['client_secret'] = credentials['client_secret']
-        new_credentials['redire ct_uri'] = credentials['redirect_uri']
+        new_credentials['redirect_uri'] = credentials['redirect_uri']
 
         credentials = new_credentials
 
@@ -215,7 +215,7 @@ def acquire_credentials():
 
         print(token)
         credentials.update(token)
-        credentials.update(scopes)
+        credentials.update({'scope': scopes})
         spotify = oauth
     else:
         # Some form of credentials exist
